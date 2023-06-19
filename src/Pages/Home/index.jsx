@@ -1,8 +1,9 @@
-
+import { Card } from "../../Components/Card"
 function Home() {
     return (
       <>
-          Home         
+          Home
+          <Card/>        
       </>
     )
   }
