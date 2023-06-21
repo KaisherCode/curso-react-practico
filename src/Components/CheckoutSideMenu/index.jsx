@@ -15,7 +15,7 @@ const CheckoutSideMenu = () => {
                     <XMarkIcon className='h-6 w-6 text-gray-500 cursor-pointer hover:text-red-700' onClick={()=>context.closeCheckoutSideMenu()}></XMarkIcon>
                 </div>
             </div>
-            <div className='px-6'>
+            <div className='px-6 overflow-y-auto'>
                 {
                     context.cartProducts.map(product=>{
                         return(
