@@ -8,11 +8,13 @@ const Card = (data)=>{
     const showProduct = (productDettail)=>{
         context.openProductDetail()
         context.setProductToShow(productDettail)
+        context.closeCheckoutSideMenu()
     }
     const addProductsToCart=(productData)=>{
         context.setCount(context.count + 1)
         context.setCartProducts([...context.cartProducts,productData])
-        //console.log('CART: ', context.cartProducts)
+        context.openCheckoutSideMenu()
+        context.closeProductDetail()
     }
     return(
         <div className="bg-white cursor-pointer w-56 h-60 rounded-lg" >
