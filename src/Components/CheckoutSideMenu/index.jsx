@@ -6,7 +6,7 @@ import './CheckoutSideMenu.css'
 
 const CheckoutSideMenu = () => {
     const context = useContext(ShopingCartContext)
-    console.log('CART: ',context.cartProducts)
+    // console.log('CART: ',context.cartProducts)
     return(
         <aside className={` ${context.isCheckoutSideMenuOpen? 'flex':'hidden'}  CheckoutSideMenu flex-col fixed right-0 border border-black rounded-lg bg-white`}>
             <div className='flex justify-between intems-center p-6'>
