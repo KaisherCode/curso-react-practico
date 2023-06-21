@@ -2,6 +2,10 @@ import { TrashIcon } from '@heroicons/react/24/solid'
 
 const OrderCard=props=>{
     const {id,title,imageUrl,price,handleDelete}=props
+    let renderXMarkIcon
+    if (handleDelete) {
+        renderXMarkIcon =<TrashIcon onClick={()=>handleDelete(id)} className='h-6 w-6 text-gray-500 cursor-pointer hover:text-red-700' ></TrashIcon>
+    }
     return(
         <div className='flex justify-between items-center mb-3 '>
             <div className='flex items-center gap-2 '>
@@ -12,7 +16,7 @@ const OrderCard=props=>{
             </div>
             <div className='flex items-center gap-2'>
                 <p className='text-lg font-medium'>$ {price}</p>
-                <TrashIcon onClick={()=>handleDelete(id)} className='h-6 w-6 text-gray-500 cursor-pointer hover:text-red-700' ></TrashIcon>
+                {renderXMarkIcon}
             </div>
         </div>
     )

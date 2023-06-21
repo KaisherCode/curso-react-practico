@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import { ShopingCartContext } from '../../Context'
 import { OrderCard } from '../OrderCard'
@@ -15,13 +16,14 @@ const CheckoutSideMenu = () => {
 
     const handleCheckout = ()=>{
         const orderToAdd = {
-            date: '01-02-23',
+            date: '01.02.23',
             products: context.cartProducts,
             totalProducts:context.cartProducts.length,
             totalPrice:totalPrice(context.cartProducts)
         }
         context.setOrder([...context.order,orderToAdd])
         context.setCartProducts([])
+        
     }
     return(
         <aside className={` ${context.isCheckoutSideMenuOpen? 'flex':'hidden'}  CheckoutSideMenu flex-col fixed right-0 border border-black rounded-lg bg-white`}>
@@ -52,7 +54,9 @@ const CheckoutSideMenu = () => {
                     <span className='font-light'>Total: </span>
                     <span className='font-medium text-2xl'>$ {totalPrice(context.cartProducts)}</span>
                 </p>
-                <button className='bg-black py-3 text-white w-full rounded-lg' onClick={()=>handleCheckout()}>Checkout</button>
+                <Link to='/my-orders/last'>
+                    <button className='bg-black py-3 text-white w-full rounded-lg' onClick={()=>handleCheckout()}>Checkout</button>
+                </Link>
             </div>
             
         </aside>
