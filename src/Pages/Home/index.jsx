@@ -15,7 +15,7 @@ function Home() {
         )
       } else{
         return(
-          <div>Sorry, we did not find results.</div>
+          <div className='text-2xl w-80 '>Sorry, we did not find results.</div>
         )
       }
     } 

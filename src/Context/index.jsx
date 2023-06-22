@@ -39,7 +39,6 @@ export const ShoppinCartProvider = ({children}) => {
     }
 
     const filteredItemsByCategory = (items,searchByCategory)=>{
-        //console-log('items:',items )
         return items?.filter(item=>item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))           
     }
 
@@ -63,8 +62,7 @@ export const ShoppinCartProvider = ({children}) => {
         if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY',items,searchByTitle,searchByCategory))
         if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null,items,searchByTitle,searchByCategory))
     },[items,searchByTitle,searchByCategory])
-
-    //console.log('filteredItems:',filteredItems)
+    
     return(
         <ShoppinCartContext.Provider value={{
             count,

@@ -78,8 +78,8 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="flex items-center">
-                    <ShoppingCartIcon className="w-6 h-6 text-gray-500 hover:text-gray-400" ></ShoppingCartIcon> 
-                    <div className="text-red-700 font-medium">{context.count}</div>
+                    <ShoppingCartIcon className="w-6 h-6 text-gray-500 hover:text-gray-400" onClick={()=>context.openCheckoutSideMenu(true)}></ShoppingCartIcon> 
+                    <div className="text-red-700 font-medium">{context.cartProducts.length}</div>
                 </li>
             </ul>
         </nav>
