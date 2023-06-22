@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import { ShopingCartContext } from '../../Context'
+import { ShoppinCartContext } from '../../Context'
 import './ProductDetail.css'
 
 const ProductDetail = () => {
-    const context = useContext(ShopingCartContext)
+    const context = useContext(ShoppinCartContext)
     // console.log('PRODUCT SHOW: ',context.productToShow)
     return(
         <aside className={` ${context.isProductDetailOpen? 'flex':'hidden'}  product-detail flex-col fixed right-0 border border-black rounded-lg bg-white`}>

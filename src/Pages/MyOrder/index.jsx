@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import { Link } from 'react-router-dom'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
-import { ShopingCartContext } from "../../Context"
+import { ShoppinCartContext } from "../../Context"
 import {Layout} from '../../Components/Layout'
 import { OrderCard } from "../../Components/OrderCard"
 
 function MyOrder() {
-  const context = useContext(ShopingCartContext)
+  const context = useContext(ShoppinCartContext)
   const currentPath = window.location.pathname
   let index = currentPath.substring(currentPath.lastIndexOf('/')+1)
   if (index === 'last') index = context.order?.length -1

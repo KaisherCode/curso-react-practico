@@ -1,8 +1,8 @@
 import { createContext,useState,useEffect } from "react"
 
-export const ShopingCartContext = createContext()
+export const ShoppinCartContext = createContext()
 
-export const ShopingCartProvider = ({children}) => {
+export const ShoppinCartProvider = ({children}) => {
     // Shopping Cart . Increment Quantity
     const [count,setCount] = useState(0)
     // Prodcut Detail . Open/Close
@@ -21,17 +21,27 @@ export const ShopingCartProvider = ({children}) => {
     const [order,setOrder]=useState([])
     // Get products
     const [items,setItems]=useState(null)
+    const [filteredItems,setFilteredItems]=useState(null)
     // Get products by title
     const [searchByTitle,setSearchByTitle]=useState(null)
-    console.log('searchByTitle: ',searchByTitle)
     useEffect(()=>{
         fetch("https://api.escuelajs.co/api/v1/products") 
         .then(response=>response.json())
         .then(data=>setItems(data))
     },[])
 
+    const filteredItemsByTitle = (items,searchByTitle)=>{
+        return(
+            items?.filter(item=>item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+        )            
+    }
+
+    useEffect(()=>{
+        if (searchByTitle) setFilteredItems(filteredItemsByTitle(items,searchByTitle))
+    },[items,searchByTitle])
+    //console.log('filteredItems:',filteredItems )
     return(
-        <ShopingCartContext.Provider value={{
+        <ShoppinCartContext.Provider value={{
             count,
             setCount,
             openProductDetail,
@@ -49,9 +59,10 @@ export const ShopingCartProvider = ({children}) => {
             items,
             setItems,
             searchByTitle,
-            setSearchByTitle
+            setSearchByTitle,
+            filteredItems
             }}>
             {children}
-        </ShopingCartContext.Provider>
+        </ShoppinCartContext.Provider>
     )
 }

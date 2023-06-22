@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { PlusIcon,CheckIcon } from '@heroicons/react/24/solid'
-import { ShopingCartContext } from "../../Context"
+import { ShoppinCartContext } from "../../Context"
 
 const Card = (data)=>{
-    const context = useContext(ShopingCartContext)
+    const context = useContext(ShoppinCartContext)
 
     const showProduct = (productDettail)=>{
         context.closeCheckoutSideMenu()

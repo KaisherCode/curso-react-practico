@@ -1,12 +1,11 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import {Layout} from '../../Components/Layout'
-import {ShopingCartContext} from '../../Context'
+import {ShoppinCartContext} from '../../Context'
 import { OrdersCard } from '../../Components/OrdersCart'
 function MyOrders() {
-  const context = useContext(ShopingCartContext)
-
-    console.log(context.order)
+  const context = useContext(ShoppinCartContext)
+    //console.log(context.order)
     return (
       <>
       <Layout>
@@ -14,18 +13,18 @@ function MyOrders() {
           <h1 className='font-medium text-xl'>My Orders</h1>
         </div>
         <div>
-        {
-          context.order.map((order,index)=>{
-            return(
-              <Link key={index} to={`/my-orders/${index}`}>
-                <OrdersCard 
-                totalPrice={order.totalPrice}
-                totalProducts={order.totalProducts}
-                />    
-            </Link>
-            ) 
-          })
-        }
+          {
+            context.order.map((order,index)=>{
+              return(
+                <Link key={index} to={`/my-orders/${index}`}>
+                  <OrdersCard 
+                  totalPrice={order.totalPrice}
+                  totalProducts={order.totalProducts}
+                  />    
+              </Link>
+              ) 
+            })
+          }
         </div>
       </Layout>
       </>
