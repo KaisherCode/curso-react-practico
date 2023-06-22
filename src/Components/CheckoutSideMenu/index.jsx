@@ -22,9 +22,7 @@ const CheckoutSideMenu = () => {
             totalPrice:totalPrice(context.cartProducts)
         }
         context.setOrder([...context.order,orderToAdd])
-        context.setCartProducts([])
-        closeCheckoutSideMenu()
-        
+        context.setCartProducts([])        
     }
     return(
         <aside className={` ${context.isCheckoutSideMenuOpen? 'flex':'hidden'}  CheckoutSideMenu flex-col fixed right-0 border border-black rounded-lg bg-white`}>
