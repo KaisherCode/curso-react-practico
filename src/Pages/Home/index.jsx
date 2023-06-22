@@ -7,8 +7,7 @@ function Home() {
   const context = useContext(ShoppinCartContext)
 
   const renderView = () => {
-    if (context.searchByTitle?.length > 0){
-      if (context.filteredItems?.length > 0){
+    if (context.filteredItems?.length > 0){
         return(
           context.filteredItems?.map(item => (
             <Card key={item.id} data={item}/>
@@ -19,14 +18,8 @@ function Home() {
           <div>Sorry, we did not find results.</div>
         )
       }
-    } else{
-      return(
-        context.items?.map((item)=>(
-          <Card key={item.id} data={item}/>
-        ))
-      )
-    }
-  }
+    } 
+
     return (
       <>
           <div className='flex justify-center items-center relative mb-4 w-80'>
