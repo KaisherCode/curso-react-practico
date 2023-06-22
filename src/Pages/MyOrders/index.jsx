@@ -10,8 +10,8 @@ function MyOrders() {
     return (
       <>
       <Layout>
-        <div className='flex w-80 justify-center items-center relative'>
-          <h1>My Orders</h1>
+        <div className='flex justify-center items-center relative mb-4 w-80'>
+          <h1 className='font-medium text-xl'>My Orders</h1>
         </div>
         <div>
         {

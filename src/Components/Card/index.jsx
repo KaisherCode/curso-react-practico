@@ -6,9 +6,9 @@ const Card = (data)=>{
     const context = useContext(ShopingCartContext)
 
     const showProduct = (productDettail)=>{
+        context.closeCheckoutSideMenu()
         context.openProductDetail()
         context.setProductToShow(productDettail)
-        context.closeCheckoutSideMenu()
     }
     const addProductsToCart=(productData)=>{
         context.setCount(context.count + 1)
