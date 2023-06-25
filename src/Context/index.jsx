@@ -24,6 +24,12 @@ export const initializeLocalStorage = () => {
 }
 
 export const ShoppinCartProvider = ({children}) => {
+    // My account
+    const [account,setAccount] = useState({})
+
+    // Sign out
+    const [signOut,setSignOut] = useState(false)
+
     // Shopping Cart . Increment Quantity
     const [count,setCount] = useState(0)
     // Prodcut Detail . Open/Close
@@ -106,7 +112,11 @@ export const ShoppinCartProvider = ({children}) => {
             setSearchByTitle,
             filteredItems,
             searchByCategory,
-            setSearchByCategory
+            setSearchByCategory,
+            account,
+            setAccount,
+            signOut,
+            setSignOut
             }}>
             {children}
         </ShoppinCartContext.Provider>
