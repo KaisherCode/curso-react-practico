@@ -6,6 +6,12 @@ import { ShoppinCartContext } from "../../Context"
 const Navbar = () => {
     const context = useContext(ShoppinCartContext)
     const activeStyle = 'underline underline-offset-4'
+
+    const handleSignout = () => {
+        const stringifiedSignOut = JSON.stringify(true)
+        localStorage.setItem('sign-out',stringifiedSignOut)
+        context.setSignOut(true)
+    }
     return(
         <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light">
             <ul className="flex items-center gap-3">
@@ -73,8 +79,9 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/sign-in' className={({isActive})=>isActive? activeStyle:undefined}>
-                        Sign In
+                    <NavLink to='/sign-in' className={({isActive})=>isActive? activeStyle:undefined}
+                    onClick={()=>handleSignout()}>
+                        Sign out
                     </NavLink>
                 </li>
                 <li className="flex items-center">
