@@ -1,5 +1,6 @@
-import { useRoutes,BrowserRouter } from 'react-router-dom'
-import { ShoppinCartProvider } from '../../Context'
+import { useContext } from 'react'
+import { useRoutes,BrowserRouter,Navigate } from 'react-router-dom'
+import { ShoppinCartProvider,initializeLocalStorage,ShoppinCartContext } from '../../Context'
 import Home from '../Home'
 import MyAcount from '../MyAcount'
 import MyOrder from '../MyOrder'
@@ -11,13 +12,26 @@ import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import './App.css'
 
 const AppRouters = ()=>{
+  const context = useContext(ShoppinCartContext)
+  // Account
+  const account = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(account)
+  // Sign 0ut
+  const signOut = localStorage.getItem('sign-out')
+  const parsedSignOut = JSON.parse(signOut)
+  // Has an account
+  const noAccountInLocalStorage = parsedAccount? Object.keys(parsedAccount).length===0:true
+  const noAccountInLocalState = Object.keys(context.account).length===0
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState
+  const isUserSignOut = context.signOut || parsedSignOut
+
   let routes = useRoutes([
     {path:'/', element:<Home/>},
-    {path:'/clothes', element:<Home/>},
-    {path:'/electronics', element:<Home/>},
-    {path:'/furnitures', element:<Home/>},
-    {path:'/toys', element:<Home/>},
-    {path:'/others', element:<Home/>},
+    {path:'/clothes', element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
+    {path:'/electronics', element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
+    {path:'/furnitures', element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
+    {path:'/toys', element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
+    {path:'/others', element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
     {path:'/my-acount', element:<MyAcount/>},
     {path:'/my-order', element:<MyOrder/>},
     {path:'/my-orders', element:<MyOrders/>},
@@ -29,6 +43,7 @@ const AppRouters = ()=>{
 }
 
 function App() {
+  initializeLocalStorage()
   return (
     <ShoppinCartProvider>
       <BrowserRouter>
