@@ -93,7 +93,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink to='/furnitures' 
-                    onClick={()=>context.setSearchByCategory('furnitures')}
+                    onClick={()=>context.setSearchByCategory('furniture')}
                     className={({isActive})=>isActive? activeStyle:undefined}>
                         Furnitures
                     </NavLink>
