@@ -7,11 +7,53 @@ const Navbar = () => {
     const context = useContext(ShoppinCartContext)
     const activeStyle = 'underline underline-offset-4'
 
+    // Sign Out
+    const signOut = localStorage.getItem('sign-out')
+    const parsedSignOut = JSON.parse(signOut)
+    const isUserSignOut = context.signOut || parsedSignOut
+
     const handleSignout = () => {
         const stringifiedSignOut = JSON.stringify(true)
         localStorage.setItem('sign-out',stringifiedSignOut)
         context.setSignOut(true)
     }
+
+    const renderView = () =>{
+    if (isUserSignOut){
+        return(
+        <li>
+            <NavLink to='/sign-in' className={({isActive})=>isActive? activeStyle:undefined}
+                onClick={()=>handleSignout()}>
+                Sign out
+            </NavLink>
+        </li>
+        )
+    }else{
+        return(
+            <>
+            <li className="text-black/60">
+                    team@hynkor.com
+                </li>
+                <li>
+                    <NavLink to='/my-orders' className={({isActive})=>isActive? activeStyle:undefined}>
+                        My orders
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/my-acount' className={({isActive})=>isActive? activeStyle:undefined}>
+                        My Acount
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/sign-in' className={({isActive})=>isActive? activeStyle:undefined}
+                    onClick={()=>handleSignout()}>
+                        Sign out
+                    </NavLink>
+                </li>
+            </>
+        )
+    }
+}
     return(
         <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light">
             <ul className="flex items-center gap-3">
@@ -65,25 +107,7 @@ const Navbar = () => {
                 </li>
             </ul>
             <ul className="flex items-center gap-3">
-                <li className="text-black/60">
-                    team@hynkor.com
-                </li>
-                <li>
-                    <NavLink to='/my-orders' className={({isActive})=>isActive? activeStyle:undefined}>
-                        My orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/my-acount' className={({isActive})=>isActive? activeStyle:undefined}>
-                        My Acount
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/sign-in' className={({isActive})=>isActive? activeStyle:undefined}
-                    onClick={()=>handleSignout()}>
-                        Sign out
-                    </NavLink>
-                </li>
+                {renderView()}
                 <li className="flex items-center">
                     <ShoppingCartIcon className="w-6 h-6 text-gray-500 hover:text-gray-400" onClick={()=>context.openCheckoutSideMenu(true)}></ShoppingCartIcon> 
                     <div className="text-red-700 font-medium">{context.cartProducts.length}</div>
