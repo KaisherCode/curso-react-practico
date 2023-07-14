@@ -51,13 +51,15 @@ const CheckoutSideMenu = () => {
                 }
             </div>
             <div className='px-6 mb-6'>
-                <p className='flex justify-between items-center mb-2'>
-                    <span className='font-light'>Total: </span>
+                <p className='font-ligth mb-2'>Order Summary</p>
+                <p className='flex justify-between items-center mb-4 bg-slate-200 rounded-lg p-2'>
+                    <span className='font-bold'>Total: </span>
                     <span className='font-medium text-2xl'>$ {totalPrice(context.cartProducts)}</span>
                 </p>
                 <Link to='/my-orders/last'>
-                    <button className='bg-black py-3 text-white w-full rounded-lg' onClick={()=>handleCheckout()}>Checkout</button>
+                    <button className='bg-teal-600 hover:bg-teal-500 opacity-40 hover:shadow-lg py-3 text-white w-full rounded-lg font-bold' onClick={()=>handleCheckout()}>Checkout</button>
                 </Link>
+                <div className='flex justify-center mt-2 underline'><a href='/'>Continue Shoping</a></div>
             </div>
             
         </aside>
