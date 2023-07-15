@@ -30,25 +30,25 @@ const Navbar = () => {
     if (hasUserAnAccount && !isUserSignOut) {
       return (
         <>
-          <li className="text-black/60">
-            {parsedAccount?.email}
-          </li>
-          <li>
-            <NavLink to='/my-orders' className={({ isActive }) => isActive ? activeStyle : undefined}>
-              My orders
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/my-acount' className={({ isActive }) => isActive ? activeStyle : undefined}>
-              My Acount
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined}
-              onClick={() => handleSignout()}>
-              Sign out
-            </NavLink>
-          </li>
+            <li className="text-black/60">
+              {parsedAccount?.email}
+            </li>
+            <li>
+              <NavLink to='/my-orders' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                My orders
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/my-acount' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                My Acount
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined}
+                onClick={() => handleSignout()}>
+                Sign out
+              </NavLink>
+            </li>
         </>
       )
     } else {
