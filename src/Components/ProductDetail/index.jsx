@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon,PlusCircleIcon } from '@heroicons/react/24/solid'
 import { ShoppinCartContext } from '../../Context'
 import './ProductDetail.css'
 
@@ -19,11 +19,13 @@ const ProductDetail = () => {
                 src={context.productToShow.images}
                 alt={context.productToShow.title}/>
             </figure>
-            <p className='flex flex-col p-6' >
+            <p className='flex flex-col p-5' >
                 <span className='font-medium text-2xl mb-2'>$ {context.productToShow.price}</span>
                 <span className='font-medium text-md'>{context.productToShow.title}</span>
                 <span className='font-light text-sm'>{context.productToShow.description}</span>
             </p>
+            <button 
+                className='flex justify-center items-center bg-teal-500 hover:bg-teal-600 hover:shadow-lg opacity-50 rounded-lg py-2 mx-6 text-slate-200 font-semibold'> <PlusCircleIcon className='w-6 h-6'></PlusCircleIcon> Add to cart</button>
         </aside>
     )
 }
