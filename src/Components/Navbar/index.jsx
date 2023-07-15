@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import { ShoppinCartContext } from "../../Context"
 import { ShoppingCart } from "../ShoppingCart"
 import Logo from "../../assets/logos/logo_yard_sale.svg"
+import IconMenu from "../../assets/icons/icon_menu.svg"
 
 const Navbar = () => {
   const context = useContext(ShoppinCartContext)
@@ -30,20 +31,20 @@ const Navbar = () => {
     if (hasUserAnAccount && !isUserSignOut) {
       return (
         <>
-            <li className="text-black/60">
+            <li className="text-black/60 navbar-email">
               {parsedAccount?.email}
             </li>
-            <li>
+            <li className="navbar-orders">
               <NavLink to='/my-orders' className={({ isActive }) => isActive ? activeStyle : undefined}>
                 My orders
               </NavLink>
             </li>
-            <li>
+            <li className="navbar-acount">
               <NavLink to='/my-acount' className={({ isActive }) => isActive ? activeStyle : undefined}>
                 My Acount
               </NavLink>
             </li>
-            <li>
+            <li className="navbar-sign-out ">
               <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined}
                 onClick={() => handleSignout()}>
                 Sign out
@@ -56,7 +57,7 @@ const Navbar = () => {
         <li>
           <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined}
             onClick={() => handleSignout()}>
-            Sign out
+            Sign in
           </NavLink>
         </li>
       )
@@ -64,8 +65,10 @@ const Navbar = () => {
   }
   return (
     <nav className='flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-md font-semibold text-slate-400 bg-white border border-b-2'>
-      <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg">
+      <img src={IconMenu} alt="Icon menu" className="menu" />
+      <img src={Logo} alt="Logo Yard Sale" className="logo"/>
+      <ul className="flex items-center gap-3 navbar-left">
+        <li>
           <NavLink to={`${isUserSignOut ? '/sign-in' : '/'}`}>
             <img src={Logo} alt="Logo Yard Sale" />
           </NavLink>

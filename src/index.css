@@ -1,4 +1,25 @@
 body{
     font-family: 'Quicksand', sans-serif;
 }
+.menu,.logo{
+    display: none;
+}
+@media (max-width:576px) {
+    
+}
+
+@media (max-width:640px) {
+    .menu,.logo{
+        display: block;
+    }
+    .navbar-left{
+        display:none;
+    }
+    .navbar-sign-out,
+    .navbar-acount,
+    .navbar-orders,
+    .navbar-email{
+        display: none;
+    }
+}
 

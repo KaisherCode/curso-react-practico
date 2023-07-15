@@ -28,10 +28,10 @@ function Home() {
       <input
         type='text'
         placeholder='Search in shoppi.com'
-        className='rounded-lg border border-black w-96 p-4 mb-6'
+        className='rounded-lg border border-black lg:w-96 p-4 mb-6 md:w-80'
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
-      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+      <div className='grid lg:gap-4 lg:grid-cols-4  lg:w-full lg:max-w-screen-lg sm:grid-cols-1 sm:mb-4 md:grid-cols-3 md:gap-2 '>
         {renderView()}
       </div>
       <ProductDetail />
